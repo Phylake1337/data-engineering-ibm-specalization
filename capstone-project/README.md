@@ -1,18 +1,40 @@
 # Capstone Project
 
-## Objective
-Desing, and implement data platform architecture of an ecommerce company named SoftCart.
+## Introduction
+**SoftCart** is an ecommerce company uses a hybrid architecture, with some of its databases on premises and some on cloud.
 
-SoftCart uses a hybrid architecture, with some of its databases on premises and some on cloud.
+* SoftCart's online presence is primarily through its website, which customers access using a variety of devices like laptops, mobiles and tablets.
+
+* All the catalog data of the products is stored in the MongoDB NoSQL server.
+
+* All the transactional data like inventory and sales are stored in the MySQL database server.
+
+* SoftCart's webserver is driven entirely by these two databases.
+
+* Data is periodically extracted from these two databases and put into the staging data warehouse running on PostgreSQL.
+
+* The production data warehouse is on the cloud instance of IBM DB2 server.
+
+* BI teams connect to the IBM DB2 for operational dashboard creation. IBM Cognos Analytics is used to create dashboards.
+
+* SoftCart uses Hadoop cluster as its big data platform where all the data is collected for analytics purposes.
+
+* Spark is used to analyse the data on the Hadoop cluster.
+
+* To move data between OLTP, NoSQL and the data warehouse, ETL pipelines are used and these run on Apache Airflow.
+
+## Objective
+Desing, and implement the data platform architecture for **SoftCart**
 
 ### Platform Tools and Technologies:
 | Data host / Tech | Function | Purpose |
 | -------- | -------- | -------- |
-| [MySQL](#mysql) | OLTP database | store transactions data |
-| [MongoDB](#mongodb) | NoSql database | store the e-commerce catalog data. |
+| [MySQL](#mysql) | OLTP database | Store the transactional data like inventory and sales |
+| [MongoDB](#mongodb) | NoSql database | Store the catalog data of the products |
+| [PostgreSQL](#postgresql) | Staging Data warehouse | Data is periodically extracted from these two databases and put into the staging data warehouse running on PostgreSQL. |
+| [DB2 on Cloud](#db2) | Production Data warehouse | Reporting |
 
 
-5. [Production Data warehouse – DB2 on Cloud](#db2)
 6. [Staging Data warehouse – PostgreSQL](#postgresql)
 7. [Big data platform - Hadoop](#hadoop)
 8. [Big data analytics platform – Spark](#spark)
