@@ -116,7 +116,7 @@ mongoexport -u root -p $password --authenticationDatabase admin --db catalog --c
 1. design a Star Schema for the warehouse by identifying the columns for the various dimension and fact tables in the schema.
 <img src="https://github.com/Phylake1337/data-engineering-ibm-specalization/blob/main/capstone-project/softcartRelationships.png" width="600" height="600">
 
-2. Run the [dwh_schema](github.com/Phylake1337/data-engineering-ibm-specalization/blob/main/capstone-project/dwh_schema.sql)
+2. Run the [dwh_schema](https://github.com/Phylake1337/data-engineering-ibm-specalization/blob/main/capstone-project/dwh_schema.sql)
 
 ### DB2
 ### Hadoop
