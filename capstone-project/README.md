@@ -35,7 +35,6 @@ Desing, and implement the data platform architecture for **SoftCart**
 | [DB2 on Cloud](#db2) | Production Data warehouse | Reporting |
 
 
-6. [Staging Data warehouse – PostgreSQL](#postgresql)
 7. [Big data platform - Hadoop](#hadoop)
 8. [Big data analytics platform – Spark](#spark)
 9. [Business Intelligence Dashboard - IBM Cognos Analytics](#cognosanalytics)
@@ -113,9 +112,11 @@ db.electronics.aggregate( { $group: { _id: "$type", avg_column: { $avg: "$screen
 ```
 mongoexport -u root -p $password --authenticationDatabase admin --db catalog --collection electronics --out electronics_exported_data.csv --type=csv --fields _id,type,model
 ```
+### PostgreSQL
+1. design a Star Schema for the warehouse by identifying the columns for the various dimension and fact tables in the schema.
+2. Create the schema.
 
 ### DB2
-### PostgreSQL
 ### Hadoop
 ### Spark
 ### CognosAnalytics
