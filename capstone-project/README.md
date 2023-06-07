@@ -114,7 +114,8 @@ mongoexport -u root -p $password --authenticationDatabase admin --db catalog --c
 ```
 ### PostgreSQL
 1. design a Star Schema for the warehouse by identifying the columns for the various dimension and fact tables in the schema.
-2. Create the schema.
+<img src="https://github.com/Phylake1337/data-engineering-ibm-specalization/blob/main/capstone-project/softcartRelationships.png" width="600" height="600">
+3. Create the schema.
 
 ### DB2
 ### Hadoop
