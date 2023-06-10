@@ -31,8 +31,8 @@ Desing, and implement the data platform architecture for **SoftCart**
 | -------- | -------- | -------- |
 | [MySQL](#mysql) | OLTP database | Store the transactional data like inventory and sales |
 | [MongoDB](#mongodb) | NoSql database | Store the catalog data of the products |
-| [PostgreSQL](#postgresql) | Staging Data warehouse | Data is periodically extracted from these two databases and put into the staging data warehouse running on PostgreSQL. |
-| [DB2 on Cloud](#db2) | Production Data warehouse | Reporting |
+| [PostgreSQL](#postgresql) | Staging Data Warehouse | Data is periodically extracted from these two databases and put into the staging data warehouse running on PostgreSQL. |
+| [DB2 on Cloud](#db2) | Production Data Warehouse | Reporting |
 
 
 7. [Big data platform - Hadoop](#hadoop)
@@ -112,6 +112,7 @@ db.electronics.aggregate( { $group: { _id: "$type", avg_column: { $avg: "$screen
 ```
 mongoexport -u root -p $password --authenticationDatabase admin --db catalog --collection electronics --out electronics_exported_data.csv --type=csv --fields _id,type,model
 ```
+
 ### PostgreSQL
 1. design a Star Schema for the warehouse by identifying the columns for the various dimension and fact tables in the schema.
 <img src="https://github.com/Phylake1337/data-engineering-ibm-specalization/blob/main/capstone-project/softcartRelationships.png" width="600" height="600">
@@ -119,6 +120,41 @@ mongoexport -u root -p $password --authenticationDatabase admin --db catalog --c
 2. Run the [dwh_schema](https://github.com/Phylake1337/data-engineering-ibm-specalization/blob/main/capstone-project/dwh_schema.sql)
 
 ### DB2
+1. Set up DB2 instance on the cloud.
+2. Populate the tables with data.
+3. Create grouping sets, rollup, and cube queries.
+```
+SELECT
+	country, category, Sum(amount)
+FROM 
+	FACTSALES S
+LEFT JOIN 
+	DIMDATA D ON D.dateid = S.dateid
+LEFT JOIN
+	DIMCOUNTRY C ON C.countryid = S.countryid
+LEFT JOIN
+	DIMCATEGORY CG ON CG.categoryid = S.categoryid
+GROUP BY GROUPING SETS (country, category); --ROLLUP/CUBE
+```
+5. Create MTQ.
+```
+CREATE TABLE total_sales_per_country 
+AS (
+SELECT 
+	country, sum(amount) total_sales
+FROM 
+	FACTSALES S
+LEFT JOIN 
+	DIMDATA D ON D.dateid = S.dateid
+LEFT JOIN
+	DIMCOUNTRY C ON C.countryid = S.countryid
+LEFT JOIN
+	DIMCATEGORY CG ON CG.categoryid = S.categoryid
+GROUP BY country
+)
+DATA INITIALLY DEFERRED
+REFRESH DEFERRED;
+```
 ### Hadoop
 ### Spark
 ### CognosAnalytics
