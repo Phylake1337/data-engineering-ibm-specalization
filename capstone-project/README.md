@@ -27,12 +27,13 @@
 Desing, and implement the data platform architecture for **SoftCart**
 
 ### Platform Tools and Technologies:
-| Data host / Tech | Function | Purpose |
+| Data host / Tool | Function | Purpose |
 | -------- | -------- | -------- |
 | [MySQL](#mysql) | OLTP database | Store the transactional data like inventory and sales |
 | [MongoDB](#mongodb) | NoSql database | Store the catalog data of the products |
 | [PostgreSQL](#postgresql) | Staging Data Warehouse | Data is periodically extracted from these two databases and put into the staging data warehouse running on PostgreSQL. |
 | [DB2 on Cloud](#db2) | Production Data Warehouse | Reporting |
+| [Apache Airflow](#airflow) | Data Pipelines | Move data from MySql DB to IBM DB2 using python script and DB connectors on on-going basis |
 
 
 7. [Big data platform - Hadoop](#hadoop)
@@ -155,7 +156,13 @@ GROUP BY country
 DATA INITIALLY DEFERRED
 REFRESH DEFERRED;
 ```
+### AirFlow
+1. Write a [python script](https://github.com/Phylake1337/data-engineering-ibm-specalization/blob/main/capstone-project/mysql_db2_etl.py)
+ to move the data from MySQL DB to IBM DB2 on on-going basis.
+ 
+2.
+ 
 ### Hadoop
 ### Spark
 ### CognosAnalytics
-### AirFlow
+
