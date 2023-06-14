@@ -33,13 +33,10 @@ Design, and implementing the data platform architecture for **SoftCart**
 | [MongoDB](#mongodb) | NoSql database | Store the catalog data of the products |
 | [PostgreSQL](#postgresql) | Staging Data Warehouse | Data is periodically extracted from these two databases and put into the staging data warehouse running on PostgreSQL. |
 | [DB2 on Cloud](#db2) | Production Data Warehouse | Reporting |
-| [Apache Airflow](#airflow) | Data Pipelines | Move data from MySql DB to IBM DB2 using python script and DB connectors on on-going basis |
+| [Apache Airflow](#airflow) | Data Pipelines | Move data from MySql DB to IBM DB2 - ETL the logs data |
+| [Hadoop](#hadoop) | Big data platform | big data platform where all the data is collected for analytics purposes |
+| [Spark](#spark) | Big data analytics platform | analyze the data on the Hadoop cluster |
 
-
-7. [Big data platform - Hadoop](#hadoop)
-8. [Big data analytics platform – Spark](#spark)
-9. [Business Intelligence Dashboard - IBM Cognos Analytics](#cognosanalytics)
-10. [Data Pipelines - Apache Airflow](#airflow)
 
 ### MySQL
 1. Start the MySQL server and open MySQL CLI.
@@ -63,7 +60,7 @@ CREATE TABLE sales_data (
 	);
 SHOW TABLES;
 ```
-4. Import data from CSV file to the MySQL table
+4. Import data from the CSV file to the MySQL table
 ```
 mysqlimport --local --fields-terminated-by=',' --lines-terminated-by='\n' --user=root --password=$password sales sales_data.csv
 ```
@@ -164,6 +161,11 @@ REFRESH DEFERRED;
  to extract, and filter user IPs from logs data then archive the result on a daily basis.
  
 ### Hadoop
+
+Working on it
+
 ### Spark
-### CognosAnalytics
+
+Working on it
+
 
