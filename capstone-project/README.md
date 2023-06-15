@@ -34,9 +34,7 @@ Design, and implementing the data platform architecture for **SoftCart**
 | [PostgreSQL](#postgresql) | Staging Data Warehouse | Data is periodically extracted from these two databases and put into the staging data warehouse running on PostgreSQL. |
 | [DB2 on Cloud](#db2) | Production Data Warehouse | Reporting |
 | [Apache Airflow](#airflow) | Data Pipelines | Move data from MySql DB to IBM DB2 - ETL the logs data |
-| [Hadoop](#hadoop) | Big data platform | big data platform where all the data is collected for analytics purposes |
-| [Spark](#spark) | Big data analytics platform | analyze the data on the Hadoop cluster |
-
+| [Hadoop/Spark](#spark) | Big data platform | Big data platform where all the data is collected for analytics purposes |
 
 ### MySQL
 1. Start the MySQL server and open MySQL CLI.
@@ -159,13 +157,8 @@ REFRESH DEFERRED;
  
 2. Write [airflow dag](https://github.com/Phylake1337/data-engineering-ibm-specalization/blob/main/capstone-project/web_logs_dag.py)
  to extract, and filter user IPs from logs data then archive the result on a daily basis.
- 
-### Hadoop
-
-Working on it
 
 ### Spark
 
-Working on it
-
+Analyse search terms on the e-commerce web server [notebook](https://github.com/Phylake1337/data-engineering-ibm-specalization/blob/main/capstone-project/Spark_MLOps.ipynb)
 
